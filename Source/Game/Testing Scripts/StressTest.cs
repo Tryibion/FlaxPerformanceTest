@@ -65,15 +65,11 @@ namespace Game
                 return;
             
             int spawnAmount = 0;
-            try
-            {
-                spawnAmount = int.Parse(_spawnAmountText.Text);
-            }
-            catch (Exception e)
+            if (!int.TryParse(_spawnAmountText.Text, out spawnAmount))
             {
                 return;
             }
-
+            
             int column = 0;
             int row = 0;
             int stackHeight = 0;
