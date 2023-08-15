@@ -1,0 +1,38 @@
+{
+	"ID": "9b7cb20445e5f8014ea0d9ae920dde92",
+	"TypeName": "FlaxEngine.Prefab",
+	"EngineBuild": 6344,
+	"Data": [
+	{
+		"ID": "612d498246c7129f67dcc68c667e8078",
+		"TypeName": "FlaxEngine.RigidBody",
+		"Name": "RigidBody",
+		"StaticFlags": 0
+	},
+	{
+		"ID": "55b5cee64e660c21a157479a47001ea5",
+		"TypeName": "FlaxEngine.StaticModel",
+		"ParentID": "612d498246c7129f67dcc68c667e8078",
+		"Name": "StaticModel",
+		"StaticFlags": 0,
+		"Model": "b43f0f8f4aaba3f3156896a5a22ba493",
+		"Buffer": {
+			"Entries": [
+				{
+					"Material": "60c21f7d4d12f9a5eccc809ddb3520b1",
+					"ShadowsMode": 3,
+					"Visible": true,
+					"ReceiveDecals": true
+				}
+			]
+		}
+	},
+	{
+		"ID": "dae4a0ba4762bbed6e3ac4b19bdb5e91",
+		"TypeName": "FlaxEngine.BoxCollider",
+		"ParentID": "612d498246c7129f67dcc68c667e8078",
+		"Name": "BoxCollider",
+		"StaticFlags": 0
+	}
+]
+}

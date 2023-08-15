@@ -1,14 +1,11 @@
 {
 	"ID": "9eba3d2a4cee4c099117f49c5dffc171",
 	"TypeName": "FlaxEditor.Content.Settings.GameSettings",
-	"EngineBuild": 6333,
+	"EngineBuild": 6344,
 	"Data": {
-	"ProductName": "Basic Scene",
-	"CompanyName": "My Company",
-	"CopyrightNotice": null,
 	"Icon": null,
-	"FirstScene": "74a68a984824b4510d12589f199ad68f",
-	"NoSplashScreen": false,
+	"FirstScene": "07ba28434f52c69ee9278c891968dd39",
+	"NoSplashScreen": true,
 	"SplashScreen": null,
 	"Time": "9acd18b0496064d35799f390d3a2b374",
 	"Audio": "fc8ef1bb474956920c5505b7ea7ea9ff",
@@ -16,6 +13,7 @@
 	"Physics": "7871f0364d398555ccd9e297acdc8983",
 	"Input": "f4c1c67842f6b745a6976aa8e7eff360",
 	"Graphics": "4eaf325e4cd72aa4cdeb6393cad05466",
+	"Network": null,
 	"Navigation": "9d5e29604efb16eff6b815aa4a110227",
 	"Localization": "e91c56f4484cb3ed9e58adaeff4225f6",
 	"GameCooking": "2364031e4e327637c1ad88b415fa756e",
@@ -30,6 +28,10 @@
 	"AndroidPlatform": "9ac06a884463f4ae9435e2b03c866259",
 	"SwitchPlatform": null,
 	"PS5Platform": null,
-	"MacPlatform": "052c28ab496dee2cdd4275b24dc32420"
+	"MacPlatform": "052c28ab496dee2cdd4275b24dc32420",
+	"iOSPlatform": null,
+	"ProductName": "Stress Test",
+	"CompanyName": "My Company",
+	"CopyrightNotice": null
 }
 }
