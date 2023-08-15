@@ -61,55 +61,57 @@ namespace Game
 
         private void Spawn()
         {
-            if (ParentActor && PrefabToSpawn)
+            if (!ParentActor || !PrefabToSpawn)
+                return;
+            
+            int spawnAmount = 0;
+            try
             {
-                int spawnAmount = 0;
-                try
-                {
-                    spawnAmount = int.Parse(_spawnAmountText.Text);
-                }
-                catch (Exception e)
-                {
-                    return;
-                }
-                
-                int column = 0;
-                int row = 0;
-                int stackHeight = 0;
-                for (int i = 0; i < spawnAmount; i++)
-                {
-                    var prefab = PrefabManager.SpawnPrefab(PrefabToSpawn, ParentActor);
-                    prefab.LocalPosition = new Vector3(column * DistanceApart, stackHeight * DistanceApart, row * DistanceApart);
-                    NumberInWorld += 1;
+                spawnAmount = int.Parse(_spawnAmountText.Text);
+            }
+            catch (Exception e)
+            {
+                return;
+            }
 
-                    column += 1;
-                    if (column > MaxColumns)
-                    {
-                        column = 0;
-                        row += 1;
-                    }
-                    if (row > MaxRows)
-                    {
-                        row = 0;
-                        stackHeight += 1;
-                    }
+            int column = 0;
+            int row = 0;
+            int stackHeight = 0;
+            for (int i = 0; i < spawnAmount; i++)
+            {
+                var prefab = PrefabManager.SpawnPrefab(PrefabToSpawn, ParentActor);
+                prefab.LocalPosition = new Vector3(column * DistanceApart, stackHeight * DistanceApart, row * DistanceApart);
+                NumberInWorld += 1;
+
+                column += 1;
+                if (column > MaxColumns)
+                {
+                    column = 0;
+                    row += 1;
+                }
+
+                if (row > MaxRows)
+                {
+                    row = 0;
+                    stackHeight += 1;
                 }
             }
+
             _totalInstancesControl.Text = $"Total Instances: {NumberInWorld}";
         }
 
         private void Reset()
         {
-            if (ParentActor)
+            if (!ParentActor) 
+                return;
+            
+            foreach (var child in ParentActor.Children)
             {
-                foreach (var child in ParentActor.Children)
-                {
-                    Destroy(child, 0.1f);
-                }
-
-                NumberInWorld = 0;
-                _totalInstancesControl.Text = $"Total Instances: {NumberInWorld}";
+                Destroy(child, 0.1f);
             }
+
+            NumberInWorld = 0;
+            _totalInstancesControl.Text = $"Total Instances: {NumberInWorld}";
         }
 
         /// <inheritdoc/>
