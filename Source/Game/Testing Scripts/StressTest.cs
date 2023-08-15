@@ -48,9 +48,9 @@ namespace Game
             _resetButton = ResetButtonControl.Get<Button>();
             _fpsLabel = FPSLabelControl.Get<Label>();
             _spawnAmountText = SpawnAmountTextControl.Get<TextBox>();
-            _spawnAmountText.Text = InitialNumberToSpawn.ToString();
             if (_spawnAmountText != null)
-                _totalInstancesControl = TotalInstancesLabelControl.Get<Label>();
+                _spawnAmountText.Text = InitialNumberToSpawn.ToString();
+            _totalInstancesControl = TotalInstancesLabelControl.Get<Label>();
 
             if (_resetButton != null)
                 _resetButton.Clicked += Reset;
