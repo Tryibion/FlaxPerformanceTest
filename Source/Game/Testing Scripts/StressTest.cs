@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using FlaxEngine;
+﻿using FlaxEngine;
 using FlaxEngine.GUI;
 
 namespace Game
@@ -16,6 +14,7 @@ namespace Game
         public int MaxRows = 50;
         public int InitialNumberToSpawn = 300;
         public Actor ParentActor;
+
         [ReadOnly]
         public int NumberInWorld = 0;
 
@@ -30,7 +29,7 @@ namespace Game
 
         [EditorDisplay("UI")]
         public UIControl TotalInstancesLabelControl;
-        
+
         [EditorDisplay("UI")]
         public UIControl ResetButtonControl;
 
@@ -39,7 +38,7 @@ namespace Game
         private TextBox _spawnAmountText;
         private Label _totalInstancesControl;
         private Button _resetButton;
-        
+
         /// <inheritdoc/>
         public override void OnStart()
         {
@@ -69,7 +68,8 @@ namespace Game
             {
                 return;
             }
-            
+
+            var startTime = Platform.TimeSeconds;
             int column = 0;
             int row = 0;
             int stackHeight = 0;
@@ -92,19 +92,22 @@ namespace Game
                     stackHeight += 1;
                 }
             }
+            var endTime = Platform.TimeSeconds;
+            Debug.Log($"Spawned {spawnAmount} in {Mathd.CeilToInt((endTime - startTime) * 1000.0)} ms");
 
             _totalInstancesControl.Text = $"Total Instances: {NumberInWorld}";
         }
 
         private void Reset()
         {
-            if (!ParentActor) 
+            if (!ParentActor)
                 return;
-            
-            foreach (var child in ParentActor.Children)
-            {
-                Destroy(child, 0.1f);
-            }
+
+            var startTime = Platform.TimeSeconds;
+            var count = ParentActor.ChildrenCount;
+            ParentActor.DestroyChildren(0.1f);
+            var endTime = Platform.TimeSeconds;
+            Debug.Log($"Destroyed {count} in {Mathd.CeilToInt((endTime - startTime) * 1000.0)} ms");
 
             NumberInWorld = 0;
             _totalInstancesControl.Text = $"Total Instances: {NumberInWorld}";
@@ -114,7 +117,7 @@ namespace Game
         public override void OnUpdate()
         {
             if (_fpsLabel != null)
-                _fpsLabel.Text = $"FPS: {1/Time.DeltaTime}";
+                _fpsLabel.Text = $"FPS: {Mathf.CeilToInt(1 / Time.DeltaTime)} (avg {Engine.FramesPerSecond})";
         }
 
         public override void OnDestroy()
